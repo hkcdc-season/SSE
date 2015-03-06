@@ -35,7 +35,7 @@ namespace StrumpyShaderEditor
 			if( _initialized )
 				return;
 		
-			_previewCamera = EditorUtility.CreateGameObjectWithHideFlags( "RenderPreviewCamera", HideFlags.HideAndDontSave, new[] { typeof(Camera) }).camera;
+			_previewCamera = EditorUtility.CreateGameObjectWithHideFlags( "RenderPreviewCamera", HideFlags.HideAndDontSave, new[] { typeof(Camera) }).GetComponent<Camera>();
 			_previewCamera.enabled = false;
 			_previewCamera.clearFlags = CameraClearFlags.Color;
 			_previewCamera.backgroundColor = new Color( 0.15f, 0.15f, 0.15f, 1.0f);
@@ -45,7 +45,7 @@ namespace StrumpyShaderEditor
 			var lights = new List<Light> ();
 			for (var i = 0; i < 2; i++) 
 			{
-				var l = EditorUtility.CreateGameObjectWithHideFlags ("PreRenderLight", HideFlags.HideAndDontSave, new[] { typeof(Light) }).light;
+				var l = EditorUtility.CreateGameObjectWithHideFlags ("PreRenderLight", HideFlags.HideAndDontSave, new[] { typeof(Light) }).GetComponent<Light>();
 				l.type = LightType.Directional;
 				l.intensity = 0.5f;
 				l.enabled = false;
